@@ -1427,3 +1427,85 @@ input[type="number"],
     left: 2.5% !important;
   }
 }
+
+/* ========== AJUSTES PARA MÓVILES ========== */
+@media screen and (max-width: 768px) {
+
+  body {
+    padding: 10px;
+    margin: 0;
+  }
+
+  .contenedor-principal {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .form-group,
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  select,
+  input[type="text"],
+  input[type="number"],
+  button {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .talla-box {
+    flex: 1 1 20%;
+    text-align: center;
+  }
+
+  .modal-content {
+    width: 95% !important;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .grid-tallas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .grid-tallas .talla-box {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .boton-agregar,
+  .boton-buscar {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  table {
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+  }
+
+}
