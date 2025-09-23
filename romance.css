@@ -1650,25 +1650,27 @@ input[type="number"],
   }
 }
 
-/* === Fix definitivo input + lupa lado a lado === */
+/* === FIX exclusivo para el bloque Código + lupa === */
 @media screen and (max-width: 600px) {
-  #codigo, #boton-buscar {
-    box-sizing: border-box;
+  .box label[for="codigo"] {
+    width: 100% !important;
+    margin-bottom: 5px !important;
+    text-align: left !important;
+    display: block;
   }
 
-  /* hacemos que el contenedor del código se comporte como flex */
-  #codigo, #boton-buscar {
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
     display: inline-block;
     vertical-align: middle;
   }
 
-  /* forzamos proporción */
-  #codigo {
+  .box label[for="codigo"] ~ #codigo {
     width: 72% !important;
     padding: 10px !important;
   }
 
-  #boton-buscar {
+  .box label[for="codigo"] ~ #boton-buscar {
     width: 26% !important;
     padding: 10px 0 !important;
     font-size: 20px !important;
@@ -1677,7 +1679,8 @@ input[type="number"],
 }
 
 @media screen and (max-width: 380px) {
-  #codigo, #boton-buscar {
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
     display: block;
     width: 100% !important;
     margin-bottom: 8px;
