@@ -1650,37 +1650,22 @@ input[type="number"],
   }
 }
 
-/* === Ajuste definitivo input + lupa en la misma fila === */
+/* === Código + lupa responsivo (compatible con todos los navegadores) === */
 @media screen and (max-width: 600px) {
-  .box label[for="codigo"] {
-    display: block;
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  /* fuerza el contenedor de código a flex */
-  .box label[for="codigo"] ~ #codigo,
-  .box label[for="codigo"] ~ #boton-buscar {
-    display: inline-block;
-    vertical-align: middle;
-    box-sizing: border-box;
-  }
-
-  /* nuevo: que el contenedor padre se comporte como flex */
-  .box:has(#codigo) {
+  .box-codigo {
     display: flex !important;
     gap: 8px;
     align-items: center;
     flex-wrap: nowrap;
   }
 
-  .box:has(#codigo) #codigo {
+  .box-codigo #codigo {
     flex: 0 0 72%;
     width: 72% !important;
     padding: 10px !important;
   }
 
-  .box:has(#codigo) #boton-buscar {
+  .box-codigo #boton-buscar {
     flex: 0 0 26%;
     width: 26% !important;
     padding: 10px 0 !important;
@@ -1690,12 +1675,13 @@ input[type="number"],
 }
 
 @media screen and (max-width: 380px) {
-  .box:has(#codigo) {
+  .box-codigo {
     flex-direction: column !important;
   }
-  .box:has(#codigo) #codigo,
-  .box:has(#codigo) #boton-buscar {
+  .box-codigo #codigo,
+  .box-codigo #boton-buscar {
     width: 100% !important;
     flex: none !important;
   }
 }
+
