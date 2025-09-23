@@ -1390,3 +1390,40 @@ input[type="number"],
     gap: 15px;
   }
 }
+
+/* ================== ESTILOS RESPONSIVE ================== */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  #principal {
+    width: 100% !important;
+    padding: 10px !important;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  label,
+  input,
+  select,
+  button {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    font-size: 16px !important;
+  }
+
+  .talla-box {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 5px;
+  }
+
+  .modal {
+    width: 95% !important;
+    left: 2.5% !important;
+  }
+}
