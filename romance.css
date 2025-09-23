@@ -1509,3 +1509,67 @@ input[type="number"],
   }
 
 }
+
+
+
+/* ================== AJUSTES RESPONSIVOS ================== */
+@media (max-width: 768px) {
+  body {
+    padding: 5px;
+  }
+
+  .formulario {
+    width: 100%;
+    padding: 10px;
+  }
+
+  label, select, input, textarea {
+    font-size: 16px !important;
+  }
+
+  .formulario select,
+  .formulario input,
+  .formulario textarea {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .grupo-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .grupo-input label {
+    margin-bottom: 5px;
+  }
+
+  .botones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .tabla-productos {
+    width: 100% !important;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .talla-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 4px;
+  }
+
+  .talla-box label {
+    font-size: 14px;
+  }
+
+  .talla-box input {
+    height: 30px !important;
+    font-size: 14px;
+  }
+}
+/* ========================================================== */
