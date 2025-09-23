@@ -1629,3 +1629,23 @@ input[type="number"],
   }
 }
 
+/* === FIX selector en móvil === */
+@media screen and (max-width: 600px) {
+  .box {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .box label {
+    width: 100% !important;
+    margin-bottom: 5px !important;
+    text-align: left !important;
+  }
+
+  .box select,
+  .box input {
+    width: 100% !important;
+    font-size: 16px !important;
+    padding: 10px !important;
+  }
+}
