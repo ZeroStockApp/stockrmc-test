@@ -1650,23 +1650,25 @@ input[type="number"],
   }
 }
 
-/* === Código + lupa responsivo (compatible con todos los navegadores) === */
+/* === Fix definitivo input + lupa lado a lado === */
 @media screen and (max-width: 600px) {
-  .box-codigo {
-    display: flex !important;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: nowrap;
+  #codigo, #boton-buscar {
+    box-sizing: border-box;
   }
 
-  .box-codigo #codigo {
-    flex: 0 0 72%;
+  /* hacemos que el contenedor del código se comporte como flex */
+  #codigo, #boton-buscar {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* forzamos proporción */
+  #codigo {
     width: 72% !important;
     padding: 10px !important;
   }
 
-  .box-codigo #boton-buscar {
-    flex: 0 0 26%;
+  #boton-buscar {
     width: 26% !important;
     padding: 10px 0 !important;
     font-size: 20px !important;
@@ -1675,13 +1677,9 @@ input[type="number"],
 }
 
 @media screen and (max-width: 380px) {
-  .box-codigo {
-    flex-direction: column !important;
-  }
-  .box-codigo #codigo,
-  .box-codigo #boton-buscar {
+  #codigo, #boton-buscar {
+    display: block;
     width: 100% !important;
-    flex: none !important;
+    margin-bottom: 8px;
   }
 }
-
