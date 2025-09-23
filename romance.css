@@ -1573,3 +1573,59 @@ input[type="number"],
   }
 }
 /* ========================================================== */
+
+/* === FIX RESPONSIVE DEFINITIVO === */
+
+/* Móviles hasta 600px */
+@media screen and (max-width: 600px) {
+  #contenedor {
+    max-width: 100% !important;
+    padding: 10px !important;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .tallas-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columnas de tallas */
+    gap: 6px !important;
+  }
+
+  .talla-box {
+    min-width: auto !important;
+    height: auto !important;
+    padding: 8px 4px !important;
+  }
+
+  .talla-input {
+    width: 100% !important;
+    font-size: 14px !important;
+  }
+
+  #box-botones {
+    flex-direction: column !important;
+    gap: 10px;
+  }
+
+  #box-botones .boton {
+    width: 100% !important;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    font-size: 13px !important;
+  }
+}
+
+/* Tablets 601px–900px */
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  #contenedor {
+    max-width: 95% !important;
+    padding: 20px !important;
+  }
+
+  .tallas-grid {
+    grid-template-columns: repeat(3, 1fr) !important; /* 3 columnas */
+  }
+}
+
