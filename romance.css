@@ -1683,3 +1683,62 @@ input[type="number"],
     box-sizing: border-box;
   }
 }
+
+/* === FIX exclusivo para móviles === */
+@media (max-width: 480px) {
+
+  /* Contenedor de modales: deja espacio para la X */
+  #modal-busqueda .modal-content,
+  #modal-bipear .modal-content,
+  #m1-contenido, #m2-contenido, #m3-contenido {
+    position: relative !important;
+    padding-top: 36px !important;
+    overflow: visible !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
+  }
+
+  /* Botón de cerrar (X) siempre visible y clickeable */
+  #m1-cerrar, #m2-cerrar, #m3-cerrar,
+  #modal-busqueda .btn-cerrar-modal,
+  #modal-bipear   .btn-cerrar-modal {
+    position: absolute !important;
+    top: 6px !important;
+    right: 10px !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 50 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Evitar que adornos tapen la X */
+  #modal-busqueda .modal-content::before,
+  #modal-busqueda .modal-content::after,
+  #modal-bipear   .modal-content::before,
+  #modal-bipear   .modal-content::after {
+    pointer-events: none !important;
+  }
+
+  /* Tablas a 100% del ancho */
+  #modal-busqueda table,
+  #modal-bipear table,
+  #m1-contenido table,
+  #m2-contenido table,
+  #m3-contenido table {
+    width: 100% !important;
+    table-layout: fixed !important;
+  }
+
+  #modal-busqueda th, #modal-busqueda td,
+  #modal-bipear   th, #modal-bipear   td,
+  #m1-contenido   th, #m1-contenido   td,
+  #m2-contenido   th, #m2-contenido   td,
+  #m3-contenido   th, #m3-contenido   td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+}
