@@ -1676,5 +1676,44 @@ input[type="number"],
   }
 }
 
+/* === FIX exclusivo para Código + lupa en móviles === */
+@media screen and (max-width: 600px) {
+  /* Fuerza al contenedor de Código a comportarse como flex */
+  .box label[for="codigo"] {
+    flex: 0 0 100%;
+    margin-bottom: 5px;
+  }
+
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
+    box-sizing: border-box;
+  }
+
+  .box label[for="codigo"] ~ #codigo {
+    display: inline-block;
+    width: 72% !important;
+    padding: 10px !important;
+    vertical-align: middle;
+  }
+
+  .box label[for="codigo"] ~ #boton-buscar {
+    display: inline-block;
+    width: 26% !important;
+    padding: 10px 0 !important;
+    font-size: 20px !important;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/* En móviles muy pequeños, apilamos otra vez */
+@media screen and (max-width: 380px) {
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
+    display: block;
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+}
 
 
