@@ -1629,48 +1629,38 @@ input[type="number"],
   }
 }
 
-/* === FIX selector en móvil === */
+/* === MÓVIL: label arriba y, en "Código", input + lupa en la misma línea === */
 @media screen and (max-width: 600px) {
   .box {
-    flex-direction: column !important;
+    flex-wrap: wrap !important;
     align-items: flex-start !important;
   }
 
   .box label {
-    width: 100% !important;
+    flex: 0 0 100% !important;
+    width: auto !important;
     margin-bottom: 5px !important;
     text-align: left !important;
   }
 
   .box select,
-  .box input {
+  .box input,
+  .box button {
+    flex: 1 1 100% !important;
     width: 100% !important;
     font-size: 16px !important;
     padding: 10px !important;
-  }
-}
-
-/* === FIX exclusivo para el bloque Código + lupa === */
-@media screen and (max-width: 600px) {
-  .box label[for="codigo"] {
-    width: 100% !important;
-    margin-bottom: 5px !important;
-    text-align: left !important;
-    display: block;
-  }
-
-  .box label[for="codigo"] ~ #codigo,
-  .box label[for="codigo"] ~ #boton-buscar {
-    display: inline-block;
-    vertical-align: middle;
+    box-sizing: border-box;
   }
 
   .box label[for="codigo"] ~ #codigo {
+    flex: 0 0 72% !important;
     width: 72% !important;
     padding: 10px !important;
   }
 
   .box label[for="codigo"] ~ #boton-buscar {
+    flex: 0 0 26% !important;
     width: 26% !important;
     padding: 10px 0 !important;
     font-size: 20px !important;
@@ -1681,8 +1671,10 @@ input[type="number"],
 @media screen and (max-width: 380px) {
   .box label[for="codigo"] ~ #codigo,
   .box label[for="codigo"] ~ #boton-buscar {
-    display: block;
+    flex: 0 0 100% !important;
     width: 100% !important;
-    margin-bottom: 8px;
   }
 }
+
+
+
