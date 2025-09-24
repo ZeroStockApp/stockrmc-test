@@ -62,6 +62,7 @@ const pdf = document.querySelector('#pdf');
 const pdfEncabezado = document.querySelector('#pdf-encabezado');
 const tituloInforme = document.querySelector('#titulo-informe');
 const tituloDistribuidor = document.querySelector('#titulo-distribuidor');
+const tituloSemana = document.querySelector('#titulo-semana');
 const tituloFecha = document.querySelector('#titulo-fecha'); 
 // TABLA
 const tabla = document.querySelector('table');
@@ -944,7 +945,6 @@ function crearPDF()
 
     tituloInforme.innerHTML = 'informe de '+textoTipoInforme;                       
     tituloDistribuidor.innerHTML = 'distribuidor: '+textoDistribuidor;            
-
     var fecha = new Date();
 
     tituloFecha.innerHTML = 'creado: '+fecha.toLocaleDateString()+' '+fecha.toLocaleTimeString();  
@@ -967,8 +967,10 @@ const PDF_MARGIN_NORMAL = [12, 10, bottomMargin, 10];
     
     if(filas > 0)
     {
+        if(tipoInforme.value != 0  && distribuidor.value != 0 && distribuidor.value != 99)
         {   
             var element = pdf;            
+            var nombrePDF = textoTipoInforme.substring(0,3).toUpperCase()+'-'+textoSemana+'-'+textoDistribuidor.toUpperCase();
 const opt = {
   // [top, right, bottom, left] en milímetros
     margin: esTallas ? PDF_MARGIN_TALLAS : PDF_MARGIN_NORMAL,
@@ -996,8 +998,7 @@ const opt = {
             { 
                 tipoInforme.focus(); 
             }
-            { 
-            }
+            
             else if(distribuidor.value == 0 || distribuidor.value == 99) 
             { 
                 distribuidor.focus(); 
@@ -1157,9 +1158,7 @@ document.body.classList.add("contenido-activo");
     } else {
       formularioCompleto.style.display = "none";
     }
-  });
-
-  activarEventosTallaInputs();
+  });activarEventosTallaInputs();
 
   document.body.classList.add("bienvenida-activa");
 });
@@ -2009,4 +2008,5 @@ function refreshTallaNumbers() {
     }
   });
 })();
+
 
