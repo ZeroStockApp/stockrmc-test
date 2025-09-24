@@ -40,7 +40,6 @@ function exigirDistribuidor() {
   }
   return true;
 }
-const semana = document.querySelector('#semana');
 // ESTADO ITEM
 const estadoBueno = document.querySelector('#estado-bueno');
 const estadoDefecto = document.querySelector('#estado-defecto');
@@ -63,7 +62,6 @@ const pdf = document.querySelector('#pdf');
 const pdfEncabezado = document.querySelector('#pdf-encabezado');
 const tituloInforme = document.querySelector('#titulo-informe');
 const tituloDistribuidor = document.querySelector('#titulo-distribuidor');
-const tituloSemana = document.querySelector('#titulo-semana');
 const tituloFecha = document.querySelector('#titulo-fecha'); 
 // TABLA
 const tabla = document.querySelector('table');
@@ -942,12 +940,10 @@ function crearXLS()
 function crearPDF()
 {
     var textoTipoInforme = tipoInforme.options[tipoInforme.selectedIndex].text;
-    var textoSemana = semana.options[semana.selectedIndex].text;
     var textoDistribuidor = distribuidor.options[distribuidor.selectedIndex].text;
 
     tituloInforme.innerHTML = 'informe de '+textoTipoInforme;                       
     tituloDistribuidor.innerHTML = 'distribuidor: '+textoDistribuidor;            
-    tituloSemana.innerHTML = 'semana n° '+textoSemana;
 
     var fecha = new Date();
 
@@ -971,10 +967,8 @@ const PDF_MARGIN_NORMAL = [12, 10, bottomMargin, 10];
     
     if(filas > 0)
     {
-        if(tipoInforme.value != 0 && semana.value != 0 && distribuidor.value != 0 && distribuidor.value != 99)
         {   
             var element = pdf;            
-            var nombrePDF = textoTipoInforme.substring(0,3).toUpperCase()+'-'+textoSemana+'-'+textoDistribuidor.toUpperCase();
 const opt = {
   // [top, right, bottom, left] en milímetros
     margin: esTallas ? PDF_MARGIN_TALLAS : PDF_MARGIN_NORMAL,
@@ -1002,9 +996,7 @@ const opt = {
             { 
                 tipoInforme.focus(); 
             }
-            else if(semana.value == 0) 
             { 
-                semana.focus(); 
             }
             else if(distribuidor.value == 0 || distribuidor.value == 99) 
             { 
@@ -1167,7 +1159,6 @@ document.body.classList.add("contenido-activo");
     }
   });
 
-  semanaActual();
   activarEventosTallaInputs();
 
   document.body.classList.add("bienvenida-activa");
@@ -2018,5 +2009,4 @@ function refreshTallaNumbers() {
     }
   });
 })();
-
 
