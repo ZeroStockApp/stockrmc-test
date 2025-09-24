@@ -1675,3 +1675,24 @@ input[type="number"],
     font-size: 20px !important;
   }
 }
+
+/* === Arreglo solo para el bloque Código + lupa === */
+@media screen and (max-width: 600px) {
+  #codigo,
+  #boton-buscar {
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  #codigo {
+    width: 72% !important;
+  }
+
+  #boton-buscar {
+    width: 26% !important;
+    margin-left: 2% !important;
+    text-align: center;
+    padding: 10px 0 !important;
+    font-size: 20px !important;
+  }
+}
