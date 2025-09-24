@@ -1888,3 +1888,39 @@ input[type="number"],
     margin-bottom: 8px !important;
   }
 }
+
+/* === FIX REAL: Código + lupa en la MISMA fila en móvil === */
+@media (max-width: 600px) {
+  .box { flex-wrap: wrap; }
+
+  /* El label arriba (ocupa toda la fila) */
+  .box label[for="codigo"]{
+    flex: 0 0 100% !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* Anulan el flex:1 1 100% que tienes en móvil */
+  .box label[for="codigo"] + #codigo{
+    flex: 0 0 72% !important;   /* input ocupa ~72% */
+    width: auto !important;
+    min-width: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .box label[for="codigo"] + #codigo + #boton-buscar{
+    flex: 0 0 26% !important;   /* botón ocupa ~26% */
+    width: auto !important;
+    margin-top: 0 !important;
+    text-align: center;
+  }
+}
+
+/* En pantallas muy pequeñas, apilar de nuevo */
+@media (max-width: 380px) {
+  .box label[for="codigo"] + #codigo,
+  .box label[for="codigo"] + #codigo + #boton-buscar{
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+}
