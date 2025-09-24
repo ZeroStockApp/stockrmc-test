@@ -1678,3 +1678,29 @@ input[type="number"],
     font-size: 20px !important;
   }
 }
+
+/* === FIX FINAL: Input Código + Lupa en la misma fila === */
+@media screen and (max-width: 600px) {
+  /* El contenedor de Código debe comportarse como fila */
+  .box:has(#codigo) {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 6px;
+  }
+
+  /* Input */
+  #codigo {
+    flex: 1 1 auto !important;
+    width: 72% !important;
+  }
+
+  /* Botón lupa */
+  #boton-buscar {
+    flex: 0 0 auto !important;
+    width: 26% !important;
+    text-align: center;
+    padding: 10px 0 !important;
+    font-size: 20px !important;
+  }
+}
