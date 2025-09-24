@@ -1716,4 +1716,41 @@ input[type="number"],
   }
 }
 
+/* === FIX final: input Código + lupa en la misma fila === */
+@media screen and (max-width: 600px) {
+  .box label[for="codigo"] {
+    flex: 0 0 100%;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  /* Fuerza a este contenedor a ser flex */
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+  }
+
+  .box label[for="codigo"] ~ #codigo {
+    width: 72% !important;
+    padding: 10px !important;
+  }
+
+  .box label[for="codigo"] ~ #boton-buscar {
+    width: 26% !important;
+    padding: 10px 0 !important;
+    font-size: 20px !important;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
+    display: block;
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+}
 
