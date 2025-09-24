@@ -1650,35 +1650,6 @@ input[type="number"],
   }
 }
 
-/* === FIX DEFINITIVO: Input Código + Lupa en la misma fila en móviles === */
-@media screen and (max-width: 600px) {
-  /* El label ocupa toda la fila */
-  .box label[for="codigo"] {
-    flex: 0 0 100% !important;
-    margin-bottom: 6px !important;
-    text-align: left !important;
-  }
-
-  /* Input y lupa en la misma fila */
-  #codigo, 
-  #boton-buscar {
-    display: inline-block !important;
-    vertical-align: middle !important;
-    width: auto !important;
-  }
-
-  #codigo {
-    width: 72% !important;
-  }
-
-  #boton-buscar {
-    width: 26% !important;
-    text-align: center;
-    padding: 10px 0 !important;
-    font-size: 20px !important;
-  }
-}
-
 /* === FIX FINAL: Input Código + Lupa en la misma fila === */
 @media screen and (max-width: 600px) {
   /* El contenedor de Código debe comportarse como fila */
