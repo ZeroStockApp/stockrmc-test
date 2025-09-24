@@ -1727,3 +1727,188 @@ input[type="number"],
     transform: none !important;
   }
 }
+
+/* ════════════════════════════════════════════════
+   🎯 FIX MODALES RESPONSIVE — MÓVIL (m1, m2, m3)
+   Ajusta ancho, altura mínima, X y tabla en móviles
+   Fecha: 2025-09-24 — By Lu 💖
+════════════════════════════════════════════════ */
+
+@media screen and (max-width: 600px) {
+  #m1-contenido,
+  #m2-contenido,
+  #m3-contenido {
+    width: 92% !important;
+    max-width: 92vw !important;
+    min-height: 240px !important;     /* 💡 fuerza espacio suficiente */
+    padding: 20px 16px 24px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  #m1-box,
+  #m2-box {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  #m1-box input,
+  #m2-box input,
+  #m1-box button,
+  #m2-box button {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  #m1-cerrar,
+  #m2-cerrar,
+  #m3-cerrar {
+    top: 10px !important;
+    right: 10px !important;
+    position: absolute !important;
+    z-index: 10 !important;
+    transform: none !important;
+  }
+
+  #m1-titulo,
+  #m2-titulo,
+  #m3-titulo {
+    margin-top: 35px !important;  /* 💡 da espacio para la X */
+  }
+
+  #m1-tabla,
+  #m2-tabla {
+    margin-top: 14px !important;
+    font-size: 14px !important;
+  }
+
+  #m1-tabla th,
+  #m1-tabla td,
+  #m2-tabla th,
+  #m2-tabla td {
+    padding: 6px 8px !important;
+    font-size: 13px !important;
+    word-break: break-word;
+  }
+}
+
+/* -----------------------------------------------
+   FIX MODALES RESPONSIVE - MÓVIL (m1, m2, m3)
+   Ajusta ancho, altura mínima, X y tabla en móviles
+   Fecha: 2025-09-24 - By Lu
+------------------------------------------------ */
+
+@media screen and (max-width: 600px) {
+  #m1-contenido,
+  #m2-contenido,
+  #m3-contenido {
+    width: 92% !important;
+    max-width: 92vw !important;
+    min-height: 240px !important;
+    padding: 20px 16px 24px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  #m1-box,
+  #m2-box {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  #m1-box input,
+  #m2-box input,
+  #m1-box button,
+  #m2-box button {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  #m1-cerrar,
+  #m2-cerrar,
+  #m3-cerrar {
+    top: 10px !important;
+    right: 10px !important;
+    position: absolute !important;
+    z-index: 10 !important;
+    transform: none !important;
+  }
+
+  #m1-titulo,
+  #m2-titulo,
+  #m3-titulo {
+    margin-top: 35px !important;
+  }
+
+  #m1-tabla,
+  #m2-tabla {
+    margin-top: 14px !important;
+    font-size: 14px !important;
+  }
+
+  #m1-tabla th,
+  #m1-tabla td,
+  #m2-tabla th,
+  #m2-tabla td {
+    padding: 6px 8px !important;
+    font-size: 13px !important;
+    word-break: break-word;
+  }
+}
+
+/* -----------------------------------------------
+   FIX MODALES RESPONSIVE - MÓVIL (m1, m2, m3)
+   Ajusta ancho, altura mínima, X y tabla en móviles
+   Fecha: 2025-09-24 - By Lu
+------------------------------------------------ */
+
+@media screen and (max-width: 600px) {
+  #m1-contenido,
+  #m2-contenido,
+  #m3-contenido {
+    width: 92% !important;
+    max-width: 92vw !important;
+    min-height: 240px !important;
+    padding: 20px 16px 24px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  #m1-box,
+  #m2-box {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  #m1-box input,
+  #m2-box input,
+  #m1-box button,
+  #m2-box button {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  #m1-cerrar,
+  #m2-cerrar,
+  #m3-cerrar {
+    top: 10px !important;
+    right: 10px !important;
+    position: absolute !important;
+    z-index: 10 !important;
+    transform:
+
