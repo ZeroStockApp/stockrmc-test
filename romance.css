@@ -1851,18 +1851,18 @@ input[type="number"],
 #tabla { overflow-x:auto; -webkit-overflow-scrolling: touch; }
 #tabla table { min-width: 700px; } /* ajusta si tu tabla necesita otro mínimo */
 
-/* === FIX para input Código + lupa en móviles === */
+/* === FIX input Código + lupa en móviles === */
 @media screen and (max-width: 600px) {
-  /* Forzar al contenedor de Código a usar flex */
   .box label[for="codigo"] {
     flex: 0 0 100% !important;
     margin-bottom: 6px !important;
+    text-align: left !important;
   }
 
   .box label[for="codigo"] ~ #codigo,
   .box label[for="codigo"] ~ #boton-buscar {
     display: inline-block !important;
-    vertical-align: middle;
+    vertical-align: middle !important;
     box-sizing: border-box !important;
   }
 
@@ -1879,7 +1879,7 @@ input[type="number"],
   }
 }
 
-/* En pantallas muy pequeñas, apilar otra vez */
+/* Si la pantalla es muy pequeña, apilamos otra vez */
 @media screen and (max-width: 380px) {
   .box label[for="codigo"] ~ #codigo,
   .box label[for="codigo"] ~ #boton-buscar {
@@ -1888,4 +1888,3 @@ input[type="number"],
     margin-bottom: 8px !important;
   }
 }
-
