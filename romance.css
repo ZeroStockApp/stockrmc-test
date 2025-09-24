@@ -1649,3 +1649,37 @@ input[type="number"],
     padding: 10px !important;
   }
 }
+
+/* ✅ FIX RESPONSIVE para MODALES en pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  #m1-contenido,
+  #m2-contenido,
+  #m3-contenido {
+    min-width: 90% !important;
+    max-width: 95vw !important;
+    width: 95% !important;
+    padding: 16px 12px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  #m1-box,
+  #m2-box,
+  #m3-box {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  #m1-box input,
+  #m2-box input,
+  #m3-box input,
+  #m1-box select,
+  #m2-box select,
+  #m3-box select,
+  #m1-box button,
+  #m2-box button,
+  #m3-box button {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+}
