@@ -1764,3 +1764,32 @@ input[type="number"],
     border-bottom: 2px solid #fff; 
   }
 }
+
+@media (max-width: 480px) {
+  /* Fuerza al contenedor de la tabla a ocupar todo el modal */
+  #modal-busqueda .modal-content,
+  #modal-bipear .modal-content {
+    display: block !important;
+  }
+
+  #modal-busqueda .modal-content table,
+  #modal-bipear .modal-content table {
+    width: 100% !important;
+    margin: 0 !important;
+    border-collapse: collapse !important;
+  }
+
+  #modal-busqueda .modal-content thead,
+  #modal-bipear .modal-content thead {
+    display: table-header-group !important;
+    width: 100% !important;
+  }
+
+  #modal-busqueda th, #modal-bipear th,
+  #modal-busqueda td, #modal-bipear td {
+    width: auto !important;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
