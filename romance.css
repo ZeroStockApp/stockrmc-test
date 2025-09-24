@@ -1742,3 +1742,25 @@ input[type="number"],
     word-wrap: break-word !important;
   }
 }
+
+/* === FIX encabezados en tablas de modales (solo móvil) === */
+@media (max-width: 480px) {
+
+  #modal-busqueda table,
+  #modal-bipear table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  #modal-busqueda th, #modal-busqueda td,
+  #modal-bipear   th, #modal-bipear   td {
+    width: auto !important;
+    text-align: center;
+  }
+
+  #modal-busqueda thead th,
+  #modal-bipear   thead th {
+    background-color: #f8cce5; /* mismo tono de fondo rosado */
+    border-bottom: 2px solid #fff; 
+  }
+}
