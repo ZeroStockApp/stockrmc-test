@@ -1850,3 +1850,42 @@ input[type="number"],
 /* 5) Tabla: scroll horizontal limpio */
 #tabla { overflow-x:auto; -webkit-overflow-scrolling: touch; }
 #tabla table { min-width: 700px; } /* ajusta si tu tabla necesita otro mínimo */
+
+/* === FIX para input Código + lupa en móviles === */
+@media screen and (max-width: 600px) {
+  /* Forzar al contenedor de Código a usar flex */
+  .box label[for="codigo"] {
+    flex: 0 0 100% !important;
+    margin-bottom: 6px !important;
+  }
+
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
+    display: inline-block !important;
+    vertical-align: middle;
+    box-sizing: border-box !important;
+  }
+
+  .box label[for="codigo"] ~ #codigo {
+    width: 72% !important;
+    padding: 10px !important;
+  }
+
+  .box label[for="codigo"] ~ #boton-buscar {
+    width: 26% !important;
+    padding: 10px 0 !important;
+    font-size: 20px !important;
+    text-align: center !important;
+  }
+}
+
+/* En pantallas muy pequeñas, apilar otra vez */
+@media screen and (max-width: 380px) {
+  .box label[for="codigo"] ~ #codigo,
+  .box label[for="codigo"] ~ #boton-buscar {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+}
+
