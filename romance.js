@@ -1034,15 +1034,9 @@ function ocultarColumna(displayColumna, displayEncabezado)
 
     pdfEncabezado.style.display = displayEncabezado;
 }
-//NUMERO DE SEMANA DEL AÑO 2022
-function semanaActual()
-{
-    var fechaActual = new Date();
-    var primeroEnero = new Date(fechaActual.getFullYear(),0,1);
-    var numeroDia = (Math.floor((fechaActual - primeroEnero) / (24 * 60 * 60 * 1000))+1);
-    var numeroSemana = Math.floor((numeroDia+4)/7);
-    semana.selectedIndex = numeroSemana; 
-}
+
+  // Ajuste defensiv
+
 
 // Mostrar u ocultar el campo ITEM ESTADO y TIPO DE DEFECTO según tipo de informe
 document.getElementById("tipo-informe").addEventListener("change", function () {
@@ -2024,4 +2018,5 @@ function refreshTallaNumbers() {
     }
   });
 })();
+
 
