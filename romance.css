@@ -1683,3 +1683,47 @@ input[type="number"],
     box-sizing: border-box;
   }
 }
+
+/* === FIX FINAL MODALES EN MÓVIL === */
+@media screen and (max-width: 600px) {
+  #m1-contenido,
+  #m2-contenido,
+  #m3-contenido {
+    width: 95% !important;
+    max-width: 95vw !important;
+    min-width: unset !important;
+    min-height: 180px !important;
+    box-sizing: border-box !important;
+    padding: 18px 14px 20px !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+  }
+
+  #m1-box,
+  #m2-box,
+  #m3-box {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  #m1-box input,
+  #m2-box input,
+  #m3-box input,
+  #m1-box select,
+  #m2-box select,
+  #m3-box select,
+  #m1-box button,
+  #m2-box button,
+  #m3-box button {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  #m1-cerrar,
+  #m2-cerrar,
+  #m3-cerrar {
+    top: 10px !important;
+    right: 10px !important;
+    transform: none !important;
+  }
+}
