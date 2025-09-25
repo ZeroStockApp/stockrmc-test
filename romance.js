@@ -2017,6 +2017,8 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.sort((a, b) => a.text.localeCompare(b.text, 'es', { sensitivity: 'base' }));
   select.innerHTML = '<option value="">Seleccione un distribuidor</option>';
   opciones.forEach(op => select.appendChild(op));
+  select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
