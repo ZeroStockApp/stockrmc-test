@@ -244,20 +244,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const select = document.getElementById("distribuidor");
   if (!select) return;
 
-  // Mantener la primera opción como placeholder
   const first = select.options[0];
   const opts = Array.from(select.options).slice(1);
 
-  // Orden alfabético (alfabeto español, sin distinguir mayúsculas)
   opts.sort((a, b) => a.text.localeCompare(b.text, 'es', { sensitivity: 'base' }));
 
-  // Reconstruir la lista
   select.innerHTML = "";
+  first.selected = true;   // <--- esta línea evita que se seleccione Zulima Test u otro por defecto
   select.appendChild(first);
   opts.forEach(o => select.appendChild(o));
 });
 </script>
 </div></body></html>
+
 
 
 
