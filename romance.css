@@ -1794,10 +1794,25 @@ input[type="number"],
 }
 
 @media (max-width: 480px) {
-  #modal-busqueda .modal-content * {
-    outline: 1px solid rgba(255,0,0,0.3) !important;
+  /* Fuerza al contenedor de la tabla a ocupar todo el ancho del modal */
+  #modal-busqueda .table-responsive,
+  #modal-busqueda .table-container,
+  #modal-bipear .table-responsive,
+  #modal-bipear .table-container {
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
-  #modal-busqueda .modal-content > div {
-    outline: 2px dashed rgba(0,0,255,0.5) !important;
+
+  /* Fuerza a la tabla a ocupar todo el ancho */
+  #modal-busqueda table,
+  #modal-bipear table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
   }
 }
+
+
