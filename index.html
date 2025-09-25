@@ -33,7 +33,7 @@
 <div class="box">
 <label for="distribuidor">Distribuidor</label>
 <select id="distribuidor" required>
-  <option value="" selected disabled hidden>Seleccione un distribuidor</option>
+  <option value="">Seleccione un distribuidor</option>
   <option>Ana Elizabeth Krause Seron</option>
   <option>Carla Valentina Gallardo Miranda</option>
   <option>Claudia Edith Perez Cobo</option>
@@ -239,23 +239,8 @@
 <script src="romance.js"></script>
 <script src="exportar_excel.min.js"></script>
 <script src="guardar_archivo.min.js"></script>
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const select = document.getElementById("distribuidor");
-  if (!select) return;
-
-  const first = select.options[0];
-  const opts = Array.from(select.options).slice(1);
-
-  opts.sort((a, b) => a.text.localeCompare(b.text, 'es', { sensitivity: 'base' }));
-
-  select.innerHTML = "";
-  first.selected = true;   // <--- esta línea evita que se seleccione Zulima Test u otro por defecto
-  select.appendChild(first);
-  opts.forEach(o => select.appendChild(o));
-});
-</script>
 </div></body></html>
+
 
 
 
