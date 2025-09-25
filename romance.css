@@ -1793,3 +1793,11 @@ input[type="number"],
   }
 }
 
+@media (max-width: 480px) {
+  #modal-busqueda .modal-content * {
+    outline: 1px solid rgba(255,0,0,0.3) !important;
+  }
+  #modal-busqueda .modal-content > div {
+    outline: 2px dashed rgba(0,0,255,0.5) !important;
+  }
+}
