@@ -1849,16 +1849,3 @@ input[type="number"],
   }
 }
 
-/* ===== Ajuste de grilla de tallas para tablet vertical y móviles ===== */
-.tallas-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 10px; /* o el que ya uses */
-}
-
-/* Para tablets verticales y móviles */
-@media (max-width: 1024px) {
-  .tallas-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
