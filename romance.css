@@ -1793,3 +1793,30 @@ input[type="number"],
   }
 }
 
+/* === FIX FINAL para tablas dentro de #modal-1 (BUSCAR PRODUCTO) === */
+@media (max-width: 600px) {
+  #modal-1 .modal-personalizado,
+  #modal-1 .modal-content,
+  #modal-1 {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px !important;
+  }
+
+  #modal-1 table {
+    width: 100% !important;
+    min-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    display: table !important; /* 🔥 evita que se achique */
+  }
+
+  #modal-1 th,
+  #modal-1 td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: anywhere !important;
+    text-align: center !important;
+  }
+}
