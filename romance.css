@@ -1849,3 +1849,11 @@ input[type="number"],
   }
 }
 
+/* === FIX DEFINITIVO PARA TALLAS EN VERTICAL === */
+@media screen and (max-width: 900px) {
+  /* Aplica a móviles y tablets verticales */
+  .tallas-grid {
+    grid-template-columns: repeat(4, 1fr) !important; /* 4 columnas = 2 filas */
+    gap: 8px !important;
+  }
+}
