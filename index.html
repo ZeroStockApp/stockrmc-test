@@ -53,6 +53,7 @@
   <option>Solange Stefani Soto Huala</option>
   <option>Valentina Beatriz Cancino Maldonado</option>
   <option>Viviana Erika Soto Oliva</option>
+  <option>Zulima test</option>
   <option>Yanira Constanza Espinoza Benavines</option>
 </select>
 
@@ -238,7 +239,26 @@
 <script src="romance.js"></script>
 <script src="exportar_excel.min.js"></script>
 <script src="guardar_archivo.min.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const select = document.getElementById("distribuidor");
+  if (!select) return;
+
+  // Mantener la primera opción como placeholder
+  const first = select.options[0];
+  const opts = Array.from(select.options).slice(1);
+
+  // Orden alfabético (alfabeto español, sin distinguir mayúsculas)
+  opts.sort((a, b) => a.text.localeCompare(b.text, 'es', { sensitivity: 'base' }));
+
+  // Reconstruir la lista
+  select.innerHTML = "";
+  select.appendChild(first);
+  opts.forEach(o => select.appendChild(o));
+});
+</script>
 </div></body></html>
+
 
 
 
