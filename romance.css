@@ -1820,3 +1820,31 @@ input[type="number"],
     text-align: center !important;
   }
 }
+
+/* === FIX FINAL para tablas dentro de #modal-2 (BIPEAR PRODUCTO) === */
+@media (max-width: 600px) {
+  #modal-2,
+  #modal-2 .modal-personalizado,
+  #modal-2 .modal-content {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px !important;
+  }
+
+  #modal-2 table {
+    width: 100% !important;
+    min-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    display: table !important;
+  }
+
+  #modal-2 th,
+  #modal-2 td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: anywhere !important;
+    text-align: center !important;
+  }
+}
