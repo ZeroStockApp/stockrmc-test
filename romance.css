@@ -1743,76 +1743,53 @@ input[type="number"],
   }
 }
 
-/* === FIX encabezados en tablas de modales (solo móvil) === */
-@media (max-width: 480px) {
+/* === FIX FINAL para que las tablas de BUSQUEDA y BIPEAR ocupen todo el ancho en móvil === */
+@media (max-width: 600px) {
 
-  #modal-busqueda table,
-  #modal-bipear table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-  }
-
-  #modal-busqueda th, #modal-busqueda td,
-  #modal-bipear   th, #modal-bipear   td {
-    width: auto !important;
-    text-align: center;
-  }
-
-  #modal-busqueda thead th,
-  #modal-bipear   thead th {
-    background-color: #f8cce5; /* mismo tono de fondo rosado */
-    border-bottom: 2px solid #fff; 
-  }
-}
-
-@media (max-width: 480px) {
-  /* Fuerza al contenedor de la tabla a ocupar todo el modal */
+  /* Contenedor principal del modal: ancho completo */
   #modal-busqueda .modal-content,
   #modal-bipear .modal-content {
-    display: block !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
+    box-sizing: border-box !important;
+    padding: 16px 12px !important;
   }
 
-  #modal-busqueda .modal-content table,
-  #modal-bipear .modal-content table {
-    width: 100% !important;
-    margin: 0 !important;
-    border-collapse: collapse !important;
-  }
-
-  #modal-busqueda .modal-content thead,
-  #modal-bipear .modal-content thead {
-    display: table-header-group !important;
-    width: 100% !important;
-  }
-
-  #modal-busqueda th, #modal-bipear th,
-  #modal-busqueda td, #modal-bipear td {
-    width: auto !important;
-    text-align: center;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Fuerza al contenedor de la tabla a ocupar todo el ancho del modal */
+  /* Si existe un envoltorio de tabla, forzamos 100% */
   #modal-busqueda .table-responsive,
-  #modal-busqueda .table-container,
   #modal-bipear .table-responsive,
+  #modal-busqueda .table-container,
   #modal-bipear .table-container {
     width: 100% !important;
     display: block !important;
+    overflow-x: auto !important; /* permite scroll si algo se sale */
     box-sizing: border-box !important;
-    padding: 0 !important;
-    margin: 0 !important;
   }
 
-  /* Fuerza a la tabla a ocupar todo el ancho */
+  /* Tabla en sí a 100% y con columnas fijas */
   #modal-busqueda table,
   #modal-bipear table {
     width: 100% !important;
+    min-width: 100% !important;
     table-layout: fixed !important;
     border-collapse: collapse !important;
+    display: table !important; /* 🔥 clave: evita el block que la encoge */
+  }
+
+  /* Encabezado completo y visible */
+  #modal-busqueda thead,
+  #modal-bipear thead {
+    display: table-header-group !important;
+  }
+
+  #modal-busqueda th,
+  #modal-bipear th,
+  #modal-busqueda td,
+  #modal-bipear td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: anywhere !important;
+    text-align: center !important;
   }
 }
-
 
