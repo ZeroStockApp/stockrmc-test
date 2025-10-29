@@ -1279,11 +1279,73 @@ function buildPdfFilename() {
 
 
 function exportarPDFConTallasSiCorresponde() {
-// Bloquea exportación si no hay distribuidora
-if (!exigirDistribuidor()) { return; }
+  const informe = document.getElementById("tipoInforme").value;
+  const nombreDistribuidor = document.getElementById("distribuidor").value;
+  const quienRecibe = document.getElementById("recibe").value;
+  const fecha = new Date().toLocaleDateString();
 
-  
-  // —— Anti-corte fila/celda para PDF ——
+  const datos = recogerDatos();
+
+  let ventana = window.open("", "_blank");
+  ventana.document.write(`
+    <html>
+    <head>
+      <title>Informe PDF</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        @media only screen and (max-width: 600px) {
+          body {
+            margin: 5px;
+          }
+        }
+        h1 {
+          text-align: center;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+        }
+        th, td {
+          border: 1px solid #333;
+          padding: 8px;
+          text-align: center;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Informe de ${informe}</h1>
+      <p><strong>Distribuidor:</strong> ${nombreDistribuidor}</p>
+      <p><strong>Recibido por:</strong> ${quienRecibe}</p>
+      <p><strong>Fecha:</strong> ${fecha}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Talla</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${datos.map(item => `
+            <tr>
+              <td>${item.producto}</td>
+              <td>${item.cantidad}</td>
+              <td>${item.talla || "-"}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </body>
+    </html>
+  `);
+  ventana.document.close();
+  ventana.print();
+}
+// —— Anti-corte fila/celda para PDF ——
   function aplicarAntiCorte(el) {
     try {
       el.style.breakInside = 'avoid';
