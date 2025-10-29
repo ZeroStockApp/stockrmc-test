@@ -271,30 +271,20 @@ cantidad.addEventListener('keydown', function(e)
     }
 });
 
-// ==== SUMA TOTAL DE PRODUCTOS (robusta y compatible en móvil) ====
-function sumarItems() {
-  var suma = 0;
-  // 3ª columna = CANTIDAD (según tu <thead>) 
-  // ver index.html: th "cantidad" es la 3ª columna
-  var celdas = document.querySelectorAll('#tabla tbody tr td:nth-child(3)');
+//////////////////////////////////
+//SUMAR ITEMS
+function sumarItems()
+{
+    var suma = 0;
+    var cantidades = document.querySelectorAll('.cantidad');
 
-  for (var i = 0; i < celdas.length; i++) {
-    var txt = celdas[i].textContent || celdas[i].innerText || '';
-    txt = txt
-      .replace(/\u00A0/g, '')          // NBSP
-      .replace(/[.,](?=\d{3}\b)/g, '') // miles
-      .replace(',', '.')               // coma -> punto
-      .trim();
+    cantidades.forEach(function(e)
+    {
+        suma = parseInt(e.innerHTML) + suma;            
+    });
 
-    var n = Number(txt);
-    suma += isFinite(n) ? n : 0;
-  }
-
-  var totalEl = document.getElementById('total'); // coincide con tu HTML
-  if (totalEl) totalEl.textContent = 'TOTAL PRODUCTOS: ' + suma;
+    total.innerHTML = 'TOTAL PRODUCTOS: '+suma;
 }
-
-
 //LIMPIAR
 function limpiarDatos()
 {
@@ -1289,73 +1279,11 @@ function buildPdfFilename() {
 
 
 function exportarPDFConTallasSiCorresponde() {
-  const informe = document.getElementById("tipoInforme").value;
-  const nombreDistribuidor = document.getElementById("distribuidor").value;
-  const quienRecibe = document.getElementById("recibe").value;
-  const fecha = new Date().toLocaleDateString();
+// Bloquea exportación si no hay distribuidora
+if (!exigirDistribuidor()) { return; }
 
-  const datos = recogerDatos();
-
-  let ventana = window.open("", "_blank");
-  ventana.document.write(`
-    <html>
-    <head>
-      <title>Informe PDF</title>
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 20px;
-        }
-        @media only screen and (max-width: 600px) {
-          body {
-            margin: 5px;
-          }
-        }
-        h1 {
-          text-align: center;
-        }
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 20px;
-        }
-        th, td {
-          border: 1px solid #333;
-          padding: 8px;
-          text-align: center;
-        }
-      </style>
-    </head>
-    <body>
-      <h1>Informe de ${informe}</h1>
-      <p><strong>Distribuidor:</strong> ${nombreDistribuidor}</p>
-      <p><strong>Recibido por:</strong> ${quienRecibe}</p>
-      <p><strong>Fecha:</strong> ${fecha}</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Talla</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${datos.map(item => `
-            <tr>
-              <td>${item.producto}</td>
-              <td>${item.cantidad}</td>
-              <td>${item.talla || "-"}</td>
-            </tr>
-          `).join("")}
-        </tbody>
-      </table>
-    </body>
-    </html>
-  `);
-  ventana.document.close();
-  ventana.print();
-}
-// —— Anti-corte fila/celda para PDF ——
+  
+  // —— Anti-corte fila/celda para PDF ——
   function aplicarAntiCorte(el) {
     try {
       el.style.breakInside = 'avoid';
@@ -2091,10 +2019,6 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
-
-
-
-
 
 
 
