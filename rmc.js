@@ -287,7 +287,7 @@ function sumarItems() {
     const n = Number(limpio);
     suma += Number.isFinite(n) ? n : 0;
   });
-
+  const total = document.getElementById('totalProductos');
   total.textContent = 'TOTAL PRODUCTOS: ' + suma;
 }
 
@@ -2087,6 +2087,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
