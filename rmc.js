@@ -271,25 +271,28 @@ cantidad.addEventListener('keydown', function(e)
     }
 });
 
-//////////////////////////////////
-//SUMAR ITEMS
+// ==== SUMA TOTAL DE PRODUCTOS (robusta y compatible en móvil) ====
 function sumarItems() {
   let suma = 0;
-  const cantidades = document.querySelectorAll('.cantidad');
 
-  cantidades.forEach(td => {
+  // Toma la 3ª columna (CANTIDAD) del cuerpo de la tabla
+  const celdas = document.querySelectorAll('#tabla tbody tr td:nth-child(3)');
+
+  celdas.forEach(td => {
     const limpio = td.textContent
-      .replace(/\u00A0/g, '')            // NBSP (espacios invisibles)
-      .replace(/[.,](?=\d{3}\b)/g, '')   // separadores de miles
-      .replace(',', '.')                 // cambia coma por punto si existiera
+      .replace(/\u00A0/g, '')          // NBSP
+      .replace(/[.,](?=\d{3}\b)/g, '') // miles
+      .replace(',', '.')               // coma -> punto
       .trim();
 
     const n = Number(limpio);
     suma += Number.isFinite(n) ? n : 0;
   });
-  const total = document.getElementById('totalProductos');
-  total.textContent = 'TOTAL PRODUCTOS: ' + suma;
+
+  const totalEl = document.getElementById('total'); // <- coincide con tu HTML
+  totalEl.textContent = 'TOTAL PRODUCTOS: ' + suma;
 }
+
 
 //LIMPIAR
 function limpiarDatos()
@@ -2087,6 +2090,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
