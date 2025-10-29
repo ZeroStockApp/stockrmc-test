@@ -273,21 +273,15 @@ cantidad.addEventListener('keydown', function(e)
 
 //////////////////////////////////
 //SUMAR ITEMS
-function sumarItems() {
-  let suma = 0;
-  const cantidades = document.querySelectorAll('.cantidad');
+function sumarItems()
+{
+    var suma = 0;
+    var cantidades = document.querySelectorAll('.cantidad');
 
-  cantidades.forEach(function(e) {
-    const texto = e.textContent.trim();
-    const numero = parseInt(texto);
-    if (!isNaN(numero)) {
-      suma += numero;
-    }
-  });
-
-  total.innerHTML = 'TOTAL PRODUCTOS: ' + suma;
-}
-);
+    cantidades.forEach(function(e)
+    {
+        suma = parseInt(e.innerHTML) + suma;            
+    });
 
     total.innerHTML = 'TOTAL PRODUCTOS: '+suma;
 }
@@ -944,8 +938,15 @@ function crearXLS()
     
     saveAs(new Blob([s2ab(wbout)], {type: 'application/octet-stream'}), 'tabla.xlsx');
 }
-function crearPDF()
-{
+
+$1
+    // === Ajuste temporal de ancho para informes SIN tallas ===
+    const esTallas = (tipoInforme.value === "1" || tipoInforme.value === "3");
+    const originalWidth = pdf.style.width;
+    if (!esTallas) {
+        pdf.style.width = "980px"; // ensanchamos temporalmente para que no se rompa el PDF
+    }
+
     var textoTipoInforme = tipoInforme.options[tipoInforme.selectedIndex].text;
     var textoDistribuidor = distribuidor.options[distribuidor.selectedIndex].text;
 
