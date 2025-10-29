@@ -273,24 +273,25 @@ cantidad.addEventListener('keydown', function(e)
 
 // ==== SUMA TOTAL DE PRODUCTOS (robusta y compatible en móvil) ====
 function sumarItems() {
-  let suma = 0;
+  var suma = 0;
+  // 3ª columna = CANTIDAD (según tu <thead>) 
+  // ver index.html: th "cantidad" es la 3ª columna
+  var celdas = document.querySelectorAll('#tabla tbody tr td:nth-child(3)');
 
-  // Toma la 3ª columna (CANTIDAD) del cuerpo de la tabla
-  const celdas = document.querySelectorAll('#tabla tbody tr td:nth-child(3)');
-
-  celdas.forEach(td => {
-    const limpio = td.textContent
+  for (var i = 0; i < celdas.length; i++) {
+    var txt = celdas[i].textContent || celdas[i].innerText || '';
+    txt = txt
       .replace(/\u00A0/g, '')          // NBSP
       .replace(/[.,](?=\d{3}\b)/g, '') // miles
       .replace(',', '.')               // coma -> punto
       .trim();
 
-    const n = Number(limpio);
-    suma += Number.isFinite(n) ? n : 0;
-  });
+    var n = Number(txt);
+    suma += isFinite(n) ? n : 0;
+  }
 
-  const totalEl = document.getElementById('total'); // <- coincide con tu HTML
-  totalEl.textContent = 'TOTAL PRODUCTOS: ' + suma;
+  var totalEl = document.getElementById('total'); // coincide con tu HTML
+  if (totalEl) totalEl.textContent = 'TOTAL PRODUCTOS: ' + suma;
 }
 
 
@@ -2090,6 +2091,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
