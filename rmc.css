@@ -1857,3 +1857,16 @@ input[type="number"],
     gap: 8px !important;
   }
 }
+
+
+// ==== SUMA TOTAL DE PRODUCTOS (versión segura para evitar NaN en móviles y celdas vacías) ====
+/* Quita márgenes y relleno del body SOLO en modo PDF */
+body.pdf-full {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* (opcional) Encabezado un poco más compacto para evitar saltos altos */
+body.pdf-full #pdf-encabezado {
+  margin-bottom: 28px !important; /* antes 50px */
+}
