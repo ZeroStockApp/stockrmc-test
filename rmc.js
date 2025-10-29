@@ -273,18 +273,24 @@ cantidad.addEventListener('keydown', function(e)
 
 //////////////////////////////////
 //SUMAR ITEMS
-function sumarItems()
-{
-    var suma = 0;
-    var cantidades = document.querySelectorAll('.cantidad');
+function sumarItems() {
+  let suma = 0;
+  const cantidades = document.querySelectorAll('.cantidad');
 
-    cantidades.forEach(function(e)
-    {
-        suma = parseInt(e.innerHTML) + suma;            
-    });
+  cantidades.forEach(td => {
+    const limpio = td.textContent
+      .replace(/\u00A0/g, '')            // NBSP (espacios invisibles)
+      .replace(/[.,](?=\d{3}\b)/g, '')   // separadores de miles
+      .replace(',', '.')                 // cambia coma por punto si existiera
+      .trim();
 
-    total.innerHTML = 'TOTAL PRODUCTOS: '+suma;
+    const n = Number(limpio);
+    suma += Number.isFinite(n) ? n : 0;
+  });
+
+  total.textContent = 'TOTAL PRODUCTOS: ' + suma;
 }
+
 //LIMPIAR
 function limpiarDatos()
 {
@@ -2081,6 +2087,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
