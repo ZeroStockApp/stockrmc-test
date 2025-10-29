@@ -1859,7 +1859,6 @@ input[type="number"],
 }
 
 
-// ==== SUMA TOTAL DE PRODUCTOS (versión segura para evitar NaN en móviles y celdas vacías) ====
 /* Quita márgenes y relleno del body SOLO en modo PDF */
 body.pdf-full {
   margin: 0 !important;
