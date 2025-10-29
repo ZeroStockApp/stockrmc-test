@@ -273,15 +273,21 @@ cantidad.addEventListener('keydown', function(e)
 
 //////////////////////////////////
 //SUMAR ITEMS
-function sumarItems()
-{
-    var suma = 0;
-    var cantidades = document.querySelectorAll('.cantidad');
+function sumarItems() {
+  let suma = 0;
+  const cantidades = document.querySelectorAll('.cantidad');
 
-    cantidades.forEach(function(e)
-    {
-        suma = parseInt(e.innerHTML) + suma;            
-    });
+  cantidades.forEach(function(e) {
+    const texto = e.textContent.trim();
+    const numero = parseInt(texto);
+    if (!isNaN(numero)) {
+      suma += numero;
+    }
+  });
+
+  total.innerHTML = 'TOTAL PRODUCTOS: ' + suma;
+}
+);
 
     total.innerHTML = 'TOTAL PRODUCTOS: '+suma;
 }
