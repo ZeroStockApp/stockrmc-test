@@ -971,17 +971,36 @@ const PDF_MARGIN_NORMAL = [12, 10, bottomMargin, 10];
         {   
             var element = pdf;            
             var nombrePDF = textoTipoInforme.substring(0,3).toUpperCase()+'-'+textoSemana+'-'+textoDistribuidor.toUpperCase();
+const ZEBRA_PINK = '#faeaf1'; // el rosita de tus filas
+
 const opt = {
   // [top, right, bottom, left] en milímetros
-    margin: esTallas ? PDF_MARGIN_TALLAS : PDF_MARGIN_NORMAL,
+  margin: esTallas ? PDF_MARGIN_TALLAS : PDF_MARGIN_NORMAL,
   filename: buildPdfFilename(),
   image: { type: 'jpeg', quality: 0.98 },
-  html2canvas: { scale: 3 },
+
+  html2canvas: {
+    scale: 3,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+
+    // 👇 CLAVE: pintamos zebra en el DOM CLONADO que html2canvas realmente captura
+    onclone: (clonedDoc) => {
+      const tabla = clonedDoc.querySelector('#pdf table');
+      if (!tabla) return;
+
+      const filas = tabla.querySelectorAll('tbody tr');
+      filas.forEach((fila, i) => {
+        fila.style.backgroundColor = (i % 2 === 0) ? '#ffffff' : ZEBRA_PINK;
+      });
+    }
+  },
+
   jsPDF: { unit: 'mm', format: 'a4', orientation: esTallas ? 'landscape' : 'portrait' },
   pagebreak: { mode: ['css','legacy'] }
 };
 
-            
+          
             sortTable(tabla);
             ocultarColumna('none', 'block');
 
@@ -2030,6 +2049,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
