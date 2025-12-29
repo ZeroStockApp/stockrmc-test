@@ -246,16 +246,16 @@
 // FUNCIÓN PARA GENERAR PDF CON ZEBRA REAL
 document.getElementById("boton-pdf").addEventListener("click", function () {
 
-    // --- APLICAR ZEBRA INLINE EN TODAS LAS TABLAS DEL PDF ---
-    const tablas = document.querySelectorAll("#pdf table");
+    // --- APLICAR ZEBRA SOLO A LA TABLA DEL PDF ---
+    const tabla = document.querySelector("#pdf table");
 
-    tablas.forEach(tabla => {
+    if (tabla) {
         const filas = tabla.querySelectorAll("tbody tr");
         filas.forEach((fila, index) => {
             const color = (index % 2 === 0) ? "#ffffff" : "#faeaf1";
             fila.style.backgroundColor = color;
         });
-    });
+    }
 
     // --- GENERAR PDF ---
     const elemento = document.getElementById("pdf");
@@ -271,7 +271,7 @@ document.getElementById("boton-pdf").addEventListener("click", function () {
 </script>
 
 
-</div></body></html>
+
 
 
 
