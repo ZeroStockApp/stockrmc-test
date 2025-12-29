@@ -1870,12 +1870,12 @@ body.pdf-full #pdf-encabezado {
   margin-bottom: 28px !important; /* antes 50px */
 }
 
-/* --- ZEBRA PARA TABLAS EN PANTALLA Y PDF --- */
-.tabla-productos tbody tr:nth-child(odd) {
-    background-color: #ffffff; /* filas impares blancas */
+/* Estilo zebra para las filas de la tabla en pantalla y PDF */
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* blanco */
 }
 
-.tabla-productos tbody tr:nth-child(even) {
-    background-color: #fdeef7; /* rosa MUY clarito */
+.table tbody tr:nth-child(even) {
+    background-color: #fdebf3; /* rosa muy suave */
 }
 
