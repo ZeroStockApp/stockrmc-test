@@ -1456,6 +1456,14 @@ divTrWrapper.style.breakInside = 'avoid';
 divTrWrapper.style.pageBreakInside = 'avoid';
 const tr = document.createElement('tr');
     aplicarAntiCorte(tr);
+
+    // --- EFECTO ZEBRA INVENTARIO ---
+    if (i % 2 !== 0) {
+        tr.style.backgroundColor = '#fdebf3'; // Color Rosado
+    } else {
+        tr.style.backgroundColor = '#ffffff'; // Color Blanco
+    }
+    
     const celdas = [code, name, qty, sizes.pp, sizes.p, sizes.m, sizes.g, sizes.gg, sizes.egg, sizes.exgg, sizes.u];
     celdas.forEach((val, idx) => {
   const td = document.createElement('td');
@@ -1606,11 +1614,16 @@ if (estado && estado !== '0' && !yaTrae) {
 }
 
 
-
-
     const tr = document.createElement('tr');
     aplicarAntiCorte(tr);
 
+// --- EFECTO ZEBRA DEVOLUCIÓN ---
+    if (i % 2 !== 0) {
+        tr.style.backgroundColor = '#fdebf3'; // Color Rosado
+    } else {
+        tr.style.backgroundColor = '#ffffff'; // Color Blanco
+    }
+    
 // --- celdas de la fila (Devolución) ---
 const td1 = document.createElement('td');
 aplicarAntiCorte(td1);
@@ -2049,6 +2062,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
