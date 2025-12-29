@@ -1869,3 +1869,13 @@ body.pdf-full {
 body.pdf-full #pdf-encabezado {
   margin-bottom: 28px !important; /* antes 50px */
 }
+
+/* --- ZEBRA PARA TABLAS EN PANTALLA Y PDF --- */
+.tabla-productos tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* filas impares blancas */
+}
+
+.tabla-productos tbody tr:nth-child(even) {
+    background-color: #fdeef7; /* rosa MUY clarito */
+}
+
