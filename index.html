@@ -266,9 +266,13 @@ document.getElementById("boton-pdf").addEventListener("click", function () {
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
-    html2pdf().set(opciones).from(elemento).save();
+    // 👇 ESTA LÍNEA ES LA QUE SOLUCIONA TODO
+    setTimeout(() => {
+        html2pdf().set(opciones).from(elemento).save();
+    }, 150); // 150ms para que la zebra se pinte antes del screenshot
 });
 </script>
+
 
 
 
