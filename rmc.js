@@ -1413,19 +1413,24 @@ tablaNueva.appendChild(thead);
 
     const qty = r.cells[2].innerText.trim();
 
-    const sizes = { pp:0,p:0,m:0,g:0,gg:0,egg:0,exgg:0,u:0 };
-    const dataset = r.cells[2].dataset.tallas;
-    if (dataset) {
-      dataset.split(',').forEach(par => {
-        const parts = par.split(':');
-        if (parts.length >= 2) {
-          const k = (parts[0]||'').trim().toUpperCase();
-          const v = parseInt((parts[1]||'').trim(), 10);
-          const key = mapKey[k];
-          if (key && !isNaN(v)) sizes[key] = v;
-        }
-      });
+    const sizes = { pp:'', p:'', m:'', g:'', gg:'', egg:'', exgg:'', u:'' };
+
+const dataset = r.cells[2].dataset.tallas;
+if (dataset) {
+  const pares = dataset.split(',');
+  pares.forEach(par => {
+    const [tallaRaw, valorRaw] = par.split(':');
+    if (!tallaRaw || !valorRaw) return;
+
+    const talla = tallaRaw.trim().toUpperCase();
+    const valor = parseInt(valorRaw.trim(), 10);
+
+    const key = mapKey[talla];
+    if (key && !isNaN(valor) && valor > 0) {
+      sizes[key] = valor.toString();
     }
+  });
+}
 
     const divTrWrapper = document.createElement('div');
 divTrWrapper.style.breakInside = 'avoid';
@@ -2019,5 +2024,6 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
