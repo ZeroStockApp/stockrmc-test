@@ -1440,7 +1440,13 @@ const tr = document.createElement('tr');
     const celdas = [code, name, qty, sizes.pp, sizes.p, sizes.m, sizes.g, sizes.gg, sizes.egg, sizes.exgg, sizes.u];
     celdas.forEach((val, idx) => {
   const td = document.createElement('td');
-  td.textContent = (val===undefined || val===null) ? '' : String(val);
+  // Si es una talla (idx >= 3) y viene 0, mostrar vacío en el PDF
+if (idx >= 3 && (val === 0 || val === "0")) {
+  td.textContent = '';
+} else {
+  td.textContent = (val === undefined || val === null) ? '' : String(val);
+}
+
   aplicarAntiCorte(td);
 
   if (idx === 1) {
@@ -2024,6 +2030,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
