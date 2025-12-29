@@ -242,16 +242,19 @@
 <script src="exportar_excel.min.js"></script>
 <script src="guardar_archivo.min.js"></script>
 
-  <script>
+<script>
 // FUNCIÓN PARA GENERAR PDF CON ZEBRA REAL
 document.getElementById("boton-pdf").addEventListener("click", function () {
 
-    // --- APLICAR ZEBRA INLINE ---
-    const filas = document.querySelectorAll("#pdf table tbody tr");
+    // --- APLICAR ZEBRA INLINE EN TODAS LAS TABLAS DEL PDF ---
+    const tablas = document.querySelectorAll("#pdf table");
 
-    filas.forEach((fila, index) => {
-        const color = (index % 2 === 0) ? "#ffffff" : "#faeaf1";  // blanco y tu rosa exacto
-        fila.style.backgroundColor = color;
+    tablas.forEach(tabla => {
+        const filas = tabla.querySelectorAll("tbody tr");
+        filas.forEach((fila, index) => {
+            const color = (index % 2 === 0) ? "#ffffff" : "#faeaf1";
+            fila.style.backgroundColor = color;
+        });
     });
 
     // --- GENERAR PDF ---
@@ -267,7 +270,9 @@ document.getElementById("boton-pdf").addEventListener("click", function () {
 });
 </script>
 
+
 </div></body></html>
+
 
 
 
