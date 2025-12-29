@@ -241,7 +241,34 @@
 <script src="rmc.js"></script>
 <script src="exportar_excel.min.js"></script>
 <script src="guardar_archivo.min.js"></script>
+
+  <script>
+// FUNCIÓN PARA GENERAR PDF CON ZEBRA REAL
+document.getElementById("boton-pdf").addEventListener("click", function () {
+
+    // --- APLICAR ZEBRA INLINE ---
+    const filas = document.querySelectorAll("#pdf table tbody tr");
+
+    filas.forEach((fila, index) => {
+        const color = (index % 2 === 0) ? "#ffffff" : "#faeaf1";  // blanco y tu rosa exacto
+        fila.style.backgroundColor = color;
+    });
+
+    // --- GENERAR PDF ---
+    const elemento = document.getElementById("pdf");
+
+    const opciones = {
+        filename: 'informe.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opciones).from(elemento).save();
+});
+</script>
+
 </div></body></html>
+
 
 
 
