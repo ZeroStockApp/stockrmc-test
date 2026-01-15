@@ -346,17 +346,55 @@ function validarItem(codigo, nombre, cantidad)
             }              
         }
 
-        if(duplicado > 0) 
-        {
-            var celdaCantidad = tbody.rows[index].cells[2];
-            var nuevaCantidad = parseInt(celdaCantidad.innerHTML) + parseInt(cantidad);
-            celdaCantidad.innerHTML = nuevaCantidad.toString();
-            sumarItems();
-            limpiarDatos();
-            limpiarTallas();
+        var celdaCantidad = tbody.rows[index].cells[2];
 
-            
+// 1) Sumar cantidad total
+var nuevaCantidad = parseInt(celdaCantidad.innerHTML) + parseInt(cantidad);
+celdaCantidad.innerHTML = nuevaCantidad.toString();
+
+// 2) Sumar tallas también (solo en tipos 1 y 3)
+if (tipoInforme.value === "1" || tipoInforme.value === "3") {
+
+    const acumulado = { pp:0, p:0, m:0, g:0, gg:0, egg:0, exgg:0, u:0 };
+
+    const dataPrev = celdaCantidad.getAttribute("data-tallas");
+    if (dataPrev) {
+        dataPrev.split(", ").forEach(par => {
+            const parts = par.split(": ");
+            const talla = (parts[0] || "").trim().toLowerCase();
+            const valor = parseInt(parts[1] || "0", 10) || 0;
+            if (Object.prototype.hasOwnProperty.call(acumulado, talla)) {
+                acumulado[talla] += valor;
+            }
+        });
+    }
+
+    const inputsTalla = document.querySelectorAll('.talla-input');
+    inputsTalla.forEach(input => {
+        const val = parseInt(input.value, 10) || 0;
+        const nombreTalla = (input.previousElementSibling?.innerText || "").trim().toLowerCase();
+        if (val > 0 && Object.prototype.hasOwnProperty.call(acumulado, nombreTalla)) {
+            acumulado[nombreTalla] += val;
         }
+    });
+
+    const orden = ["pp","p","m","g","gg","egg","exgg","u"];
+    const detalle = [];
+    orden.forEach(k => {
+        if (acumulado[k] > 0) detalle.push(`${k.toUpperCase()}: ${acumulado[k]}`);
+    });
+
+    if (detalle.length > 0) {
+        celdaCantidad.dataset.tallas = detalle.join(", ");
+    } else {
+        delete celdaCantidad.dataset.tallas;
+    }
+}
+
+sumarItems();
+limpiarDatos();
+limpiarTallas();
+
         else
         {
             agregarItem(codigo, nombre, cantidad, '0');
@@ -2062,6 +2100,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
