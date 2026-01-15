@@ -1038,7 +1038,7 @@ const opt = {
     }
   },
 
-  jsPDF: { unit: 'mm', format: 'a4', orientation: esTallas ? 'landscape' : 'portrait' },
+jsPDF: { unit: 'mm', format: esTallas ? 'letter' : 'a4', orientation: esTallas ? 'landscape' : 'portrait' },
   pagebreak: { mode: ['css','legacy'] }
 };
 
@@ -1722,7 +1722,7 @@ const opt = {
   filename: buildPdfFilename(),
   image: { type: 'jpeg', quality: 0.98 },
   html2canvas: { scale: 3 },
-  jsPDF: { unit: 'mm', format: 'a4', orientation: esTallas ? 'landscape' : 'portrait' },
+jsPDF: { unit: 'mm', format: esTallas ? 'letter' : 'a4', orientation: esTallas ? 'landscape' : 'portrait' },
     pagebreak: { mode: ['css', 'legacy'] }
 
 };
@@ -2104,6 +2104,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
