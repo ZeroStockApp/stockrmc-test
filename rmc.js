@@ -329,72 +329,77 @@ function validarItem(codigo, nombre, cantidad)
 {
     var numeroFilas = tbody.rows.length;
 
-    if(numeroFilas > 0)
+    if (numeroFilas > 0)
     {
-        var index;
+        var index = -1;
         var duplicado = 0;
 
-        for(var i = 0; i < numeroFilas; i++)
+        for (var i = 0; i < numeroFilas; i++)
         {
             var codigoFila = tbody.rows[i].cells[0].innerHTML;
             var estadoFila = tbody.rows[i].cells[5].innerHTML;
 
-            if(codigoFila == codigo && estadoFila == '0')
+            if (codigoFila == codigo && estadoFila == '0')
             {
                 index = i;
-                duplicado++;                    
-            }              
-        }
-
-        var celdaCantidad = tbody.rows[index].cells[2];
-
-// 1) Sumar cantidad total
-var nuevaCantidad = parseInt(celdaCantidad.innerHTML) + parseInt(cantidad);
-celdaCantidad.innerHTML = nuevaCantidad.toString();
-
-// 2) Sumar tallas también (solo en tipos 1 y 3)
-if (tipoInforme.value === "1" || tipoInforme.value === "3") {
-
-    const acumulado = { pp:0, p:0, m:0, g:0, gg:0, egg:0, exgg:0, u:0 };
-
-    const dataPrev = celdaCantidad.getAttribute("data-tallas");
-    if (dataPrev) {
-        dataPrev.split(", ").forEach(par => {
-            const parts = par.split(": ");
-            const talla = (parts[0] || "").trim().toLowerCase();
-            const valor = parseInt(parts[1] || "0", 10) || 0;
-            if (Object.prototype.hasOwnProperty.call(acumulado, talla)) {
-                acumulado[talla] += valor;
+                duplicado++;
             }
-        });
-    }
-
-    const inputsTalla = document.querySelectorAll('.talla-input');
-    inputsTalla.forEach(input => {
-        const val = parseInt(input.value, 10) || 0;
-        const nombreTalla = (input.previousElementSibling?.innerText || "").trim().toLowerCase();
-        if (val > 0 && Object.prototype.hasOwnProperty.call(acumulado, nombreTalla)) {
-            acumulado[nombreTalla] += val;
         }
-    });
 
-    const orden = ["pp","p","m","g","gg","egg","exgg","u"];
-    const detalle = [];
-    orden.forEach(k => {
-        if (acumulado[k] > 0) detalle.push(`${k.toUpperCase()}: ${acumulado[k]}`);
-    });
+        if (duplicado > 0 && index >= 0)
+        {
+            var celdaCantidad = tbody.rows[index].cells[2];
 
-    if (detalle.length > 0) {
-        celdaCantidad.dataset.tallas = detalle.join(", ");
-    } else {
-        delete celdaCantidad.dataset.tallas;
-    }
-}
+            // Sumar cantidad total
+            var nuevaCantidad = parseInt(celdaCantidad.innerHTML || "0", 10)
+                              + parseInt(cantidad || "0", 10);
+            celdaCantidad.innerHTML = nuevaCantidad.toString();
 
-sumarItems();
-limpiarDatos();
-limpiarTallas();
+            // Sumar tallas
+            if (tipoInforme.value === "1" || tipoInforme.value === "3")
+            {
+                const acumulado = { pp:0, p:0, m:0, g:0, gg:0, egg:0, exgg:0, u:0 };
 
+                const dataPrev = celdaCantidad.getAttribute("data-tallas");
+                if (dataPrev)
+                {
+                    dataPrev.split(", ").forEach(par => {
+                        const parts = par.split(": ");
+                        const talla = (parts[0] || "").trim().toLowerCase();
+                        const valor = parseInt(parts[1] || "0", 10) || 0;
+                        if (acumulado.hasOwnProperty(talla)) {
+                            acumulado[talla] += valor;
+                        }
+                    });
+                }
+
+                const inputsTalla = document.querySelectorAll('.talla-input');
+                inputsTalla.forEach(input => {
+                    const val = parseInt(input.value, 10) || 0;
+                    const nombreTalla = (input.previousElementSibling?.innerText || "")
+                                        .trim().toLowerCase();
+                    if (val > 0 && acumulado.hasOwnProperty(nombreTalla)) {
+                        acumulado[nombreTalla] += val;
+                    }
+                });
+
+                const orden = ["pp","p","m","g","gg","egg","exgg","u"];
+                const detalle = [];
+                orden.forEach(k => {
+                    if (acumulado[k] > 0) detalle.push(`${k.toUpperCase()}: ${acumulado[k]}`);
+                });
+
+                if (detalle.length > 0) {
+                    celdaCantidad.dataset.tallas = detalle.join(", ");
+                } else {
+                    delete celdaCantidad.dataset.tallas;
+                }
+            }
+
+            sumarItems();
+            limpiarDatos();
+            limpiarTallas();
+        }
         else
         {
             agregarItem(codigo, nombre, cantidad, '0');
@@ -403,11 +408,10 @@ limpiarTallas();
     else
     {
         agregarItem(codigo, nombre, cantidad, '0');
-
         limpiarTallas();
-
-    } 
+    }
 }
+
 botonAgregar.addEventListener('click', function() {
    if (!exigirDistribuidor()) return;
 
@@ -2100,6 +2104,7 @@ document.addEventListener("DOMContentLoaded", function() {
   opciones.forEach(op => select.appendChild(op));
   select.value = ""; // Fuerza que quede sin selección al terminar de ordenar
 });
+
 
 
 
