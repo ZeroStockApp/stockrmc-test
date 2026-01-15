@@ -688,11 +688,16 @@ body.pdf-full #contenedor {
 }
 
 body.pdf-full #pdf {
-  width: 200mm !important;     /* ancho útil */
-  margin: 0 auto !important;   /* centrado */
-  padding: 2mm !important;     /* margen interno */
-  border: 1px solid #ddd;      /* opcional */
+  width: 255mm !important;       /* 🔹 Un poco menos de Letter para evitar cortes */
+  max-width: 255mm !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
 }
+
+
 
 body.pdf-full #pdf table {
   width: 100% !important;
@@ -1858,18 +1863,6 @@ input[type="number"],
   }
 }
 
-
-/* Quita márgenes y relleno del body SOLO en modo PDF */
-body.pdf-full {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* (opcional) Encabezado un poco más compacto para evitar saltos altos */
-body.pdf-full #pdf-encabezado {
-  margin-bottom: 28px !important; /* antes 50px */
-}
-
 /* Zebra en la tabla del informe */
 #tabla table tbody tr:nth-child(odd) {
     background-color: #ffffff; /* blanco */
@@ -1879,4 +1872,145 @@ body.pdf-full #pdf-encabezado {
     background-color: #fdebf3; /* rosadito suave */
 }
 
+/* === CONFIGURACIÓN ÚNICA DE IMPRESIÓN === */
+@media print {
+  @page {
+    size: letter landscape; /* Papel Carta Horizontal */
+    margin: 1cm !important;  /* Margen de seguridad para que la impresora no corte nada */
+  }
 
+  body, html {
+    background-color: white !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* El contenedor NO debe tener un ancho fijo en mm, debe ser 100% */
+  #contenedor, body.pdf-full #contenedor {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Ajuste del área del PDF */
+ body.pdf-full #pdf {
+  max-width: 275mm !important;   /* LIMITE REAL para A4 landscape */
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;   /* Oculta cualquier desborde */
+  box-sizing: border-box !important;
+}
+
+
+  /* Forzamos a que la tabla se encoja para caber en el papel */
+  table {
+    width: 100% !important;
+    table-layout: auto !important; /* Permite que las columnas se ajusten al contenido */
+    font-size: 9pt !important;    /* Letra un poco más pequeña para asegurar espacio */
+  }
+
+  th, td {
+    padding: 4px !important;
+    border: 1px solid #ddd !important;
+  }
+
+  /* Ocultamos los botones para que no salgan en la impresión */
+  #box-botones, .col-4, .col-5 {
+    display: none !important;
+  }
+
+  /* Aseguramos que el total se vea y no se corte */
+  #total {
+    margin-top: 10px !important;
+    width: 100% !important;
+    text-align: right !important;
+  }
+}
+
+/* === AJUSTE DE TABLA ULTRA COMPACTA PARA PDF === */
+body.pdf-full #pdf {
+  width: 255mm !important;
+  max-width: 255mm !important;
+  margin: 0 auto !important;
+  padding: 5mm !important;
+  background-color: white !important;
+  box-sizing: border-box !important;
+}
+
+body.pdf-full #pdf table {
+  width: 100% !important;
+  table-layout: fixed !important; /* 🔹 Obliga a respetar los anchos de abajo */
+  border-collapse: collapse !important;
+}
+
+/* === ANCHOS PRECISOS DE CADA COLUMNA === */
+
+/* 1️⃣ CÓDIGO */
+body.pdf-full #pdf table th:nth-child(1),
+body.pdf-full #pdf table td:nth-child(1) {
+  width: 20mm !important;   /* Código = 2 cm */
+  min-width: 20mm !important;
+  max-width: 20mm !important;
+}
+
+/* 2️⃣ PRODUCTO */
+body.pdf-full #pdf table th:nth-child(2),
+body.pdf-full #pdf table td:nth-child(2) {
+  width: 70mm !important;   /* Producto = 7 cm */
+  min-width: 70mm !important;
+  max-width: 70mm !important;
+  text-align: left !important;
+}
+
+/* 3️⃣ CANTIDAD */
+body.pdf-full #pdf table th:nth-child(3),
+body.pdf-full #pdf table td:nth-child(3) {
+  width: 15mm !important;   /* Cantidad = 1.5 cm */
+  min-width: 15mm !important;
+  max-width: 15mm !important;
+}
+
+/* 4️⃣ COLUMNAS DE TALLAS (PP, P, M, G, GG, EGG, EXGG, U) */
+/* 🔸 Ajustadas para ocupar el espacio restante de forma equilibrada */
+body.pdf-full #pdf table th:nth-child(4),
+body.pdf-full #pdf table td:nth-child(4),
+body.pdf-full #pdf table th:nth-child(5),
+body.pdf-full #pdf table td:nth-child(5),
+body.pdf-full #pdf table th:nth-child(6),
+body.pdf-full #pdf table td:nth-child(6),
+body.pdf-full #pdf table th:nth-child(7),
+body.pdf-full #pdf table td:nth-child(7),
+body.pdf-full #pdf table th:nth-child(8),
+body.pdf-full #pdf table td:nth-child(8),
+body.pdf-full #pdf table th:nth-child(9),
+body.pdf-full #pdf table td:nth-child(9),
+body.pdf-full #pdf table th:nth-child(10),
+body.pdf-full #pdf table td:nth-child(10),
+body.pdf-full #pdf table th:nth-child(11),
+body.pdf-full #pdf table td:nth-child(11) {
+  width: 15mm !important; /* Cada una ≈ 1.5 cm para cubrir bien el ancho total */
+  text-align: center !important;
+  font-size: 9pt !important;
+}
+
+/* === AJUSTE GENERAL === */
+body.pdf-full #pdf th,
+body.pdf-full #pdf td {
+  font-size: 9pt !important;
+  padding: 2px 2px !important;
+  word-wrap: break-word !important;
+}
+
+/* === CONTENEDOR VISUAL === */
+#pdf {
+  margin: 0 auto;
+  max-width: 950px;
+  background-color: white;
+  box-sizing: border-box;
+}
